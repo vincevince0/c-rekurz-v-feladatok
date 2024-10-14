@@ -46,7 +46,7 @@ namespace Rekurziós_Feladatok
                 return 1;
             }
 
-            return bin(n, k - 1) * (n - k + 1)/k;
+            return bin(n, k - 1) * (n - k + 1) / k;
         }
 
         static int szoszam(string szoveg, int jobb)
@@ -104,7 +104,24 @@ namespace Rekurziós_Feladatok
             else
                 return 1 + szamjegyek(n / 10);
         }
+
+        static string fordit(string text)
+        {
+            if (text.Length <= 1)
+            {
+                return text;
+            }
+
+            char elsoBetu = text[0];
+            string maradek = text.Substring(1);
+
+            return fordit(maradek) + elsoBetu;
+        }
+
+
+
         static void Main(string[] args)
+
         {
 
             //Console.WriteLine("Hány lépcsőfok van: ");
@@ -146,7 +163,7 @@ namespace Rekurziós_Feladatok
 
             //bool eredmeny = palindrome(str1);
 
-            
+
             //if (eredmeny == true)
             //{
             //    Console.WriteLine("Ez a szöveg palindrome.\n");
@@ -156,11 +173,16 @@ namespace Rekurziós_Feladatok
             //    Console.WriteLine("Ez a szöveg nem palindrome.\n");
             //}
 
-            Console.WriteLine("Adj meg egy számot: ");
-            int n = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Adj meg egy számot: ");
+            //int n = Convert.ToInt32(Console.ReadLine());
 
-            int eredmeny = szamjegyek(n);
-            Console.WriteLine(eredmeny);
+            //int eredmeny = szamjegyek(n);
+            //Console.WriteLine("Az adott számban "+eredmeny+" számjegy van.");
+
+            Console.WriteLine("adj meg egy szoveget: ");
+            string szoveg = Console.ReadLine();
+
+            Console.WriteLine(fordit(szoveg));
         }
     }
 }
