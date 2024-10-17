@@ -118,7 +118,23 @@ namespace Rekurziós_Feladatok
             return fordit(maradek) + elsoBetu;
         }
 
+        static int szamjegyekOsszege(int n)
+        {
+            if (n < 10)
+                return n;
 
+            return (n % 10) + szamjegyekOsszege(n / 10);
+        }
+
+        static int tombOsszegzes(int[] arr, int n)
+        {
+            // Alapeset: Ha n eléri a 0-t, visszatér 0-val
+            if (n == 0)
+                return 0;
+
+            // Rekurzió: Az utolsó elem összege a többi elem összegével
+            return arr[n - 1] + tombOsszegzes(arr, n - 1);
+        }
 
         static void Main(string[] args)
 
@@ -179,10 +195,19 @@ namespace Rekurziós_Feladatok
             //int eredmeny = szamjegyek(n);
             //Console.WriteLine("Az adott számban "+eredmeny+" számjegy van.");
 
-            Console.WriteLine("adj meg egy szoveget: ");
-            string szoveg = Console.ReadLine();
+            //Console.WriteLine("adj meg egy szoveget: ");
+            //string szoveg = Console.ReadLine();
 
-            Console.WriteLine(fordit(szoveg));
+            //Console.WriteLine(fordit(szoveg));
+
+            //Console.WriteLine("Adj meg egy számot: ");
+            //int szam = Convert.ToInt32(Console.ReadLine());
+            //int eredmeny = szamjegyekOsszege(szam);
+            //Console.WriteLine(eredmeny);
+
+            int[] tomb = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            int eredmeny = tombOsszegzes(tomb, tomb.Length);
+            Console.WriteLine(eredmeny);
         }
     }
 }
